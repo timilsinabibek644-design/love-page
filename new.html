@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Varela+Round&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Varela Round", sans-serif;
+            background: radial-gradient(circle, #ff9a9e, #fad0c4);
+            overflow-x: hidden;
+            text-align: center;
+        }
+        /* ===== LOVEEE HEADER ===== */
+        
+        .header {
+            font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #ff1a75;
+            text-shadow: 0 0 10px #ff4d94, 0 0 20px #ff6f91, 0 0 30px #ff1a75;
+            margin-top: 20px;
+            animation: glowHeader 2s infinite alternate;
+        }
+        
+        @keyframes glowHeader {
+            0% {
+                text-shadow: 0 0 10px #ff4d94, 0 0 20px #ff6f91, 0 0 30px #ff1a75;
+            }
+            50% {
+                text-shadow: 0 0 20px #ff4d94, 0 0 40px #ff6f91, 0 0 60px #ff1a75;
+            }
+            100% {
+                text-shadow: 0 0 10px #ff4d94, 0 0 20px #ff6f91, 0 0 30px #ff1a75;
+            }
+        }
+        /* ===== CONTAINER ===== */
+        
+        .container {
+            height: calc(100vh - 100px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        /* ===== REALISTIC FULL ROSE ===== */
+        
+        .rose-container {
+            position: relative;
+            width: 250px;
+            height: 400px;
+        }
+        /* STEM */
+        
+        .stem {
+            position: absolute;
+            width: 8px;
+            height: 250px;
+            background: #0a5c0a;
+            top: 150px;
+            left: 121px;
+            border-radius: 5px;
+        }
+        /* LEAVES */
+        
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 30%, #0a8c0a, #065c05);
+            border-radius: 50% 50% 50% 50%;
+            transform-origin: center;
+            animation: leafFloat 4s infinite alternate;
+        }
+        
+        .leaf.left {
+            top: 180px;
+            left: 80px;
+            transform: rotate(-45deg);
+        }
+        
+        .leaf.right {
+            top: 180px;
+            left: 160px;
+            transform: rotate(45deg);
+        }
+        
+        @keyframes leafFloat {
+            0% {
+                transform: rotate(-45deg) translateY(0);
+            }
+            50% {
+                transform: rotate(-45deg) translateY(-5px);
+            }
+            100% {
+                transform: rotate(-45deg) translateY(0);
+            }
+        }
+        /* PETALS */
+        
+        .petal {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #ff4d94, #b3003b);
+            border-radius: 50% 50% 50% 50%;
+            top: 30px;
+            left: 85px;
+            transform-origin: bottom center;
+            animation: pulse 3s infinite alternate;
+        }
+        /* Layered petals for full look */
+        
+        .petal:nth-child(2) {
+            transform: rotate(30deg);
+            left: 65px;
+            top: 35px;
+        }
+        
+        .petal:nth-child(3) {
+            transform: rotate(-30deg);
+            left: 105px;
+            top: 35px;
+        }
+        
+        .petal:nth-child(4) {
+            transform: rotate(50deg);
+            left: 55px;
+            top: 50px;
+        }
+        
+        .petal:nth-child(5) {
+            transform: rotate(-50deg);
+            left: 115px;
+            top: 50px;
+        }
+        
+        .petal:nth-child(6) {
+            transform: rotate(15deg);
+            left: 75px;
+            top: 20px;
+        }
+        
+        .petal:nth-child(7) {
+            transform: rotate(-15deg);
+            left: 95px;
+            top: 20px;
+        }
+        /* CENTER */
+        
+        .rose-center {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at center, #ff1a75, #b3003b);
+            border-radius: 50%;
+            top: 50px;
+            left: 95px;
+            box-shadow: 0 0 20px #ff4d94, 0 0 40px #ff1a75 inset;
+        }
+        /* PULSE ANIMATION */
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        /* TEXT */
+        
+        .text {
+            margin-top: 30px;
+            font-size: 26px;
+            font-weight: bold;
+            color: #b3003b;
+            text-shadow: 0 0 15px #ff6f91;
+        }
+        
+        .text a {
+            color: #b3003b;
+            cursor: pointer;
+        }
+        
+        .text a:hover {
+            color: white;
+        }
+        /* POSTCARD PAGE */
+        
+        #card {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            padding: 60px 20px;
+        }
+        
+        h1 {
+            font-family: "Great Vibes", cursive;
+            font-size: 60px;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .postcard {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(6px);
+        }
+        /* TYPING TEXT */
+        
+        #typingText {
+            font-size: 22px;
+            color: #4b0026;
+            line-height: 1.7;
+            font-family: cursive;
+            white-space: pre-wrap;
+        }
+        /* CURSOR */
+        
+        .cursor {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin-left: 5px;
+            background: red;
+            clip-path: path("M7 13s-5-3.3-5-7a3 3 0 0 1 5-2 3 3 0 0 1 5 2c0 3.7-5 7-5 7z");
+            animation: heartbeat 1s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.3);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        /* FALLING PETALS */
+        
+        .petal-fall {
+            position: fixed;
+            top: -40px;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle at 30% 30%, #ffb3c6, #d52d58);
+            border-radius: 60% 40% 60% 40%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateX(120px) rotate(360deg);
+                top: 110vh;
+                opacity: 0;
+            }
+        }
+        /* FALLING EMOJIS / HEARTS / SPARKLES */
+        
+        .emoji {
+            position: fixed;
+            top: -40px;
+            font-size: 24px;
+            pointer-events: none;
+            opacity: 0.8;
+            animation: fallEmoji linear forwards;
+        }
+        
+        @keyframes fallEmoji {
+            to {
+                transform: translateX(100px) rotate(360deg);
+                top: 110vh;
+                opacity: 0;
+            }
+        }
+        /* SPARKLE EFFECTS AROUND ROSE */
+        
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #fff, #ff9a9e);
+            border-radius: 50%;
+            animation: sparkleAnim 2s infinite alternate;
+        }
+        
+        @keyframes sparkleAnim {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(5px, -5px) scale(1.3);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        footer {
+            margin-top: 40px;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ❤️ HEADER -->
+    <div class="header">LOVEEE YOUUUUU NANI🌸</div>
+
+    <!-- 🌹 BIG ROSE SCREEN -->
+    <div class="container" id="rose">
+        <div class="rose-container">
+            <div class="stem"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="rose-center"></div>
+            <!-- SPARKLES -->
+            <div class="sparkle" style="top:20px; left:100px;"></div>
+            <div class="sparkle" style="top:10px; left:130px;"></div>
+            <div class="sparkle" style="top:40px; left:80px;"></div>
+        </div>
+
+        <div class="text">
+            Your smile is as beautiful as a rose 🌹 <br><br> I have something for your smile <br>
+            <a onclick="openCard()">( click here baby💖)</a>
+        </div>
+    </div>
+
+    <!-- POSTCARD -->
+    <section id="card">
+        <h1>For You 💖</h1>
+        <div class="postcard">
+            <p id="typingText"></p>
+        </div>
+        <footer>
+            Loveee youu baby nadeakhkeo dherai bhayo 🥹Aau haii bholii💖
+        </footer>
+    </section>
+
+    <script>
+        const message = `
+Sanuu : 
+Dheraii resayera hunna sadhhai resayera hunna mero snauu jhagada garera hunna (fight khelni bhaye aaye hunxa 1 v 1😄 ) Narisau meo kanxuu 
+I don’t need a reason or a special day to love you. I love you always, every single moment, with all my heart. 💖🥰 Valentine day nai chaidaina sanu maile maya garna timlaii . Sadhhai loveeeee youuuuuuuuu mero mayaluuuu💖
+Timi yettikai hawa kura ma narisaide jhan ramro huntyoooo😌
+Resaye ta fakai halxuu timi gayab hunxauu testo garnaa hunna naniiii
+
+In the garden of life, you're my most cherished blossom.
+🌹
+Sanu Loving you is the most beautiful thing in my life. Even when you are upset with me, my heart never turns away from you. Your anger does not  push me back—it makes me want to understand you more. I dont need perfection from you, I just need you And your Time sanu . Every smile of yours feels like home to me, and every silence makes me miss you more. I promise my love for you is patient real and always yours.
+Dheraii resayera basera hunna sanuu 😌💗
+Timi just narisau yettikai chaini kura ma matra risaa fakauni ta ma xadai xuu nii aniii yestari 2 jana 2 tira resayera basera hunna sanuu 😌💗
+Maile xodhni ta sapana ma hooo Timle interest lose nagari th aafai le jhyau lagyo xodhdinxu yeslai bhanni dimakh ma aauni bela samma xodhera janna sanu (hope yesto gardainas kailei jhyau nalagla ma deakhi😌) 😌💗
+Forever Yours,
+Love you mero baby ❤️‍🩹 💖 💕 💞 💓
+🥹 😌 😔 🫶
+🌹 🌸 🌙 ✨ 
+🤍 💫 🕊️
+🥰 😘 😍
+`;
+
+        let index = 0;
+        const speed = 40;
+        const textElement = document.getElementById("typingText");
+        let petalInterval, emojiInterval;
+
+        function typeWriter() {
+            if (index < message.length) {
+                textElement.innerHTML = message.slice(0, index + 1) + '<span class="cursor"></span>';
+                index++;
+                setTimeout(typeWriter, speed);
+            } else {
+                textElement.innerHTML = message;
+                stopPetals();
+                stopEmojis();
+            }
+        }
+
+        /* PETALS */
+        function createPetal() {
+            const petal = document.createElement("div");
+            petal.classList.add("petal-fall");
+            petal.style.left = Math.random() * window.innerWidth + "px";
+            petal.style.animationDuration = 6 + Math.random() * 4 + "s";
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 10000);
+        }
+
+        function startPetals() {
+            petalInterval = setInterval(createPetal, 300);
+        }
+
+        function stopPetals() {
+            clearInterval(petalInterval);
+        }
+
+        /* EMOJIS */
+        const emojis = ["🫶", "🌸", "🌙", "✨", "🤍", "💫", "🕊️", "🥰", "😘", "😍"];
+
+        function createEmoji() {
+            const emoji = document.createElement("div");
+            emoji.classList.add("emoji");
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * window.innerWidth + "px";
+            emoji.style.fontSize = 20 + Math.random() * 20 + "px";
+            emoji.style.animationDuration = 4 + Math.random() * 4 + "s";
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 10000);
+        }
+
+        function startEmojis() {
+            emojiInterval = setInterval(createEmoji, 300);
+        }
+
+        function stopEmojis() {
+            clearInterval(emojiInterval);
+        }
+
+        /* OPEN CARD */
+        function openCard() {
+            document.getElementById("rose").style.display = "none";
+            document.getElementById("card").style.display = "block";
+            startPetals();
+            startEmojis();
+            setTimeout(typeWriter, 500);
+        }
+    </script>
+
+</body>
+
+</html>
